@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-acvb-navy: #060d1a;
+  --color-acvb-navy-light: #0C1C36;
+  --color-acvb-gold: #B98D3B;
+  --color-acvb-gold-light: #dfb256;
+  
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-montserrat);
+  
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  @apply bg-acvb-navy text-gray-200 antialiased selection:bg-acvb-gold selection:text-acvb-navy overflow-x-hidden font-sans;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 0%, rgba(18, 36, 68, 0.4) 0%, rgba(6, 13, 26, 1) 70%);
+  z-index: -1;
+  pointer-events: none;
 }
+
+.glass-card {
+  @apply bg-[#0c1627]/60 backdrop-blur-md border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-3xl;
+}
+
+.input-premium {
+  @apply w-full p-4 rounded-xl border border-white/10 bg-black/40 text-white focus:border-acvb-gold focus:ring-1 focus:ring-acvb-gold outline-none transition-all placeholder-gray-600;
+}
+
+/* Scrollbar invisível/elegante */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #060d1a; }
+::-webkit-scrollbar-thumb { background: #1a2a47; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #B98D3B; }
