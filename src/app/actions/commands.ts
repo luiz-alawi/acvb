@@ -9,13 +9,15 @@ export async function createUniformOrderCommand(formData: FormData) {
   const name = formData.get('name') as string;
   const number = parseInt(formData.get('number') as string);
   const size = formData.get('size') as string;
+  const type = formData.get('type') as string;
   const email = formData.get('email') as string;
 
   await prisma.uniformOrder.create({
-    data: { name, number, size, email }
+    data: { name, number, size, type, email }
   });
   
   revalidatePath('/camisetas');
+  revalidatePath('/admin');
 }
 
 export async function createMatchRequestCommand(formData: FormData) {
@@ -30,12 +32,42 @@ export async function createMatchRequestCommand(formData: FormData) {
   });
 
   revalidatePath('/jogos');
+  revalidatePath('/admin');
 }
+
+export async function acceptMatchRequestCommand(id: string) {
+  const request = await prisma.matchRequest.findUnique({ where: { id } });
+  if (request) {
+    await prisma.calendarEvent.create({
+      data: { opponent: request.teamName, location: request.location, date: request.date, time: request.time }
+    });
+    await prisma.matchRequest.delete({ where: { id } });
+  }
+  revalidatePath('/admin');
+  revalidatePath('/jogos');
+}
+
+export async function denyMatchRequestCommand(id: string) {
+  await prisma.matchRequest.delete({ where: { id } });
+  revalidatePath('/admin');
+}
+
+export async function checkExistingEmailCommand(email: string, type: 'uniform' | 'match') {
+  if (type === 'uniform') {
+    const existing = await prisma.uniformOrder.findFirst({ where: { email, status: 'PENDENTE' } });
+    return !!existing;
+  } else {
+    const existing = await prisma.matchRequest.findFirst({ where: { email, status: 'PENDENTE' } });
+    return !!existing;
+  }
+}
+
+// ADMIN
 
 export async function loginAdminCommand(formData: FormData) {
   const password = formData.get('password') as string;
-  
-  if (password === 'admin123') {
+
+  if (password === process.env.ADMIN_PASSWORD) {
     const cookieStore = await cookies();
     cookieStore.set('admin_session', 'authenticated', { httpOnly: true, secure: true, path: '/' });
   }
@@ -53,19 +85,82 @@ export async function createCalendarEventCommand(formData: FormData) {
   const location = formData.get('location') as string;
   const date = formData.get('date') as string;
   const time = formData.get('time') as string;
-
-  await prisma.calendarEvent.create({
-    data: { opponent, location, date, time }
-  });
-
+  await prisma.calendarEvent.create({ data: { opponent, location, date, time } });
   revalidatePath('/admin');
   revalidatePath('/jogos');
 }
 
 export async function updateOrderStatusCommand(id: string, status: string) {
-  await prisma.uniformOrder.update({
-    where: { id },
-    data: { status }
+  await prisma.uniformOrder.update({ where: { id }, data: { status } });
+  revalidatePath('/admin');
+}
+
+export async function createPlayerCommand(formData: FormData) {
+  const name = formData.get('name') as string;
+  const number = parseInt(formData.get('number') as string);
+  const position = formData.get('position') as string;
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
+
+  await prisma.player.create({
+    data: { name, number, position, email, password }
   });
   revalidatePath('/admin');
+  revalidatePath('/elenco');
+}
+
+export async function deletePlayerCommand(id: string) {
+  await prisma.player.delete({ where: { id } });
+  revalidatePath('/admin');
+  revalidatePath('/elenco');
+}
+
+// ATLETA
+
+export async function loginPlayerCommand(formData: FormData) {
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
+
+  const player = await prisma.player.findFirst({
+    where: { email, password }
+  });
+
+  if (player) {
+    const cookieStore = await cookies();
+    cookieStore.set('player_session', player.id, { httpOnly: true, secure: true, path: '/' });
+    redirect('/atleta');
+  } else {
+    return { error: 'Credenciais inválidas' };
+  }
+}
+
+export async function logoutPlayerCommand() {
+  const cookieStore = await cookies();
+  cookieStore.delete('player_session');
+  redirect('/atleta');
+}
+
+export async function updatePlayerProfileCommand(formData: FormData) {
+  const cookieStore = await cookies();
+  const playerId = cookieStore.get('player_session')?.value;
+
+  if (!playerId) return;
+
+  const bio = formData.get('bio') as string;
+  const instagram = formData.get('instagram') as string;
+  const photoBase64 = formData.get('photoBase64') as string;
+
+  const updateData: any = { bio, instagram };
+
+  if (photoBase64 && photoBase64.startsWith('data:image')) {
+    updateData.photoUrl = photoBase64;
+  }
+
+  await prisma.player.update({
+    where: { id: playerId },
+    data: updateData
+  });
+
+  revalidatePath('/atleta');
+  revalidatePath('/elenco');
 }

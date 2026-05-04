@@ -18,7 +18,7 @@ model UniformOrder {
   name      String
   number    Int
   size      String
-  type      String   @default("COMUM") 
+  type      String   @default("PRETA") 
   email     String
   status    String   @default("PENDENTE") 
   createdAt DateTime @default(now())
@@ -49,5 +49,10 @@ model Player {
   name      String
   number    Int
   position  String
+  email     String   @unique
+  password  String
+  bio       String?  
+  photoUrl  String?  
+  instagram String?  
   createdAt DateTime @default(now())
 }

@@ -45,7 +45,6 @@ body::before {
   @apply w-full p-4 rounded-xl border border-white/10 bg-black/40 text-white focus:border-acvb-gold focus:ring-1 focus:ring-acvb-gold outline-none transition-all placeholder-gray-600;
 }
 
-/* Scrollbar invisível/elegante */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #060d1a; }
 ::-webkit-scrollbar-thumb { background: #1a2a47; border-radius: 10px; }
