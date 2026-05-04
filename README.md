@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏐 ACVB - Associação Clube de Voleibol | Plataforma Oficial
 
-## Getting Started
+Next.js, TypeScript, Tailwind CSS, Prisma, MongoDB
 
-First, run the development server:
+Plataforma web completa desenvolvida para a gestão técnica, administrativa e pública da **Associação Clube de Voleibol (ACVB)**. O sistema possui um design moderno (Dark Mode/Esports), com áreas exclusivas para a diretoria, atletas e torcedores.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Funcionalidades
+
+O sistema é dividido em três grandes módulos funcionais:
+
+### 🌐 Portal Público
+* **Página Inicial:** Apresentação do time com design imersivo.
+* **Elenco:** Exibição dinâmica dos atletas atualizada em tempo real.
+* **Jogos & Desafios:** Calendário de partidas oficiais e formulário para equipes adversárias solicitarem amistosos.
+* **Manto ACVB:** Sistema de reserva de uniformes com visualização dinâmica (troca automática entre os modelos Preto e Branco).
+
+### 🛡️ Central de Comando (Painel Admin)
+* **Acesso Restrito:** Rota protegida por senha para configurações do site.
+* **Gestão de Amistosos:** Aprovação de desafios recebidos ou recusa.
+* **Controle de Uniformes:** Tabela de pedidos pendentes com baixa automática e controle visual de status.
+* **Gestão de Elenco:** Cadastro de novos atletas, definição de posição, numeração e geração de credenciais de acesso (E-mail e Senha inicial).
+
+### 👤 Portal do Atleta
+* **Autenticação:** Login individual para cada jogador cadastrado.
+* **Perfil Customizável:** Edição autônoma de biografia e @ do Instagram.
+* **Upload com Crop:** Envio de foto de perfil com ferramenta nativa de enquadramento/recorte (1:1) integrada via `react-easy-crop`, convertendo a imagem final em Base64 para armazenamento eficiente.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+* **Framework:** [Next.js 15](https://nextjs.org/) 
+* **Linguagem:** TypeScript
+* **Estilização:** [Tailwind CSS v4](https://tailwindcss.com/)
+* **Banco de Dados:** [MongoDB](https://www.mongodb.com/)
+* **ORM:** [Prisma 6](https://www.prisma.io/)
+* **Ícones:** [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
+* **Ferramentas Extras:** `react-easy-crop` (Recorte de imagens)
+
+---
+
+## ⚙️ Variáveis de Ambiente
+
+Para o projeto funcionar corretamente e manter a segurança, você precisará criar um arquivo `.env` na raiz do projeto contendo as seguintes variáveis:
+
+```env
+# URL de conexão com o seu cluster do MongoDB Atlas
+DATABASE_URL="mongodb+srv://<usuario>:<senha>@cluster.mongodb.net/acvb_volei?retryWrites=true&w=majority"
+
+# Senha de acesso para o Painel Administrativo (/admin)
+ADMIN_PASSWORD="sua_senha_admin"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Desenvolvido por Luiz Guilherme Alawi Grade para a Associação Clube de Voleibol.
