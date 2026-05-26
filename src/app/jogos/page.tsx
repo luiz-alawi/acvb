@@ -2,7 +2,6 @@ import { prisma } from '@/lib/prisma';
 import { MapPin, Swords } from 'lucide-react';
 import MatchForm from './MatchForm';
 
-export const dynamic = 'force-dynamic';
 
 export default async function JogosPage() {
   const games = await prisma.calendarEvent.findMany({ orderBy: { date: 'asc' } });

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
 
-export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
