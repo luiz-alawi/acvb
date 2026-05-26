@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { MapPin, Swords } from 'lucide-react';
 import MatchForm from './MatchForm';
 
+export const revalidate = 60; // revalida a cada 60 segundos
 
 export default async function JogosPage() {
   const games = await prisma.calendarEvent.findMany({ orderBy: { date: 'asc' } });

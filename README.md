@@ -13,7 +13,7 @@ O sistema é dividido em três grandes módulos funcionais:
 ### 🌐 Portal Público
 * **Página Inicial:** Apresentação do time com design imersivo.
 * **Elenco:** Exibição dinâmica dos atletas atualizada em tempo real.
-* **Jogos & Desafios:** Calendário de partidas oficiais e formulário para equipes adversárias solicitarem amistosos.
+* **Amistosos:** Calendário de partidas oficiais e formulário para equipes adversárias solicitarem amistosos.
 * **Manto ACVB:** Sistema de reserva de uniformes com visualização dinâmica (troca automática entre os modelos Preto e Branco).
 
 ### 🛡️ Central de Comando (Painel Admin)

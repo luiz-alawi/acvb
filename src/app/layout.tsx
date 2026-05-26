@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="hidden md:flex items-center gap-8 font-medium text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">Início</Link>
               <Link href="/elenco" className="text-gray-400 hover:text-white transition-colors">Elenco</Link>
-              <Link href="/jogos" className="text-gray-400 hover:text-white transition-colors">Jogos & Desafios</Link>
+              <Link href="/jogos" className="text-gray-400 hover:text-white transition-colors">Amistosos</Link>
               <Link href="/camisetas" className="px-5 py-2 rounded-full bg-white/5 text-acvb-gold border border-acvb-gold/30 hover:bg-acvb-gold hover:text-acvb-navy font-bold transition-all shadow-[0_0_15px_-3px_rgba(185,141,59,0.3)]">
                 Comprar Manto
               </Link>

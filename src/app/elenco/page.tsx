@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { User } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa';
 
+export const revalidate = 60; // revalida a cada 60 segundos
 
 export default async function ElencoPage() {
   const players = await prisma.player.findMany({
