@@ -9,6 +9,9 @@ const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '700', '900'
 export const metadata: Metadata = {
   title: 'ACVB | Associação Clube de Voleibol',
   description: 'Dominando a quadra.',
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
