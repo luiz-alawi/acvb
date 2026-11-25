@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 
 const links = [
   { href: '/', label: 'Início' },
-  { href: '/elenco', label: 'Elenco' },
   { href: '/jogos', label: 'Amistosos' },
 ];
 
@@ -29,9 +28,6 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link href="/camisetas" className="px-5 py-2 rounded-full bg-white/5 text-acvb-gold border border-acvb-gold/30 hover:bg-acvb-gold hover:text-acvb-navy font-bold transition-all shadow-[0_0_15px_-3px_rgba(185,141,59,0.3)]">
-            Comprar Manto
-          </Link>
         </nav>
 
         {/* Hamburger */}
@@ -57,15 +53,6 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <div className="px-4 pt-2 pb-1">
-            <Link
-              href="/camisetas"
-              onClick={() => setOpen(false)}
-              className="block text-center px-5 py-3 rounded-full bg-white/5 text-acvb-gold border border-acvb-gold/30 hover:bg-acvb-gold hover:text-acvb-navy font-bold text-sm transition-all"
-            >
-              Comprar Manto
-            </Link>
-          </div>
         </div>
       )}
     </div>

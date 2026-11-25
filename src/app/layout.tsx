@@ -27,10 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p className="text-xs text-gray-600 font-medium tracking-widest uppercase">
             © {new Date().getFullYear()} ACVB — Todos os direitos reservados.
           </p>
-          <div className="flex gap-4">
-            <Link href="/admin" className="text-[10px] text-gray-700 hover:text-acvb-gold transition-colors tracking-widest uppercase">Admin</Link>
-            <Link href="/atleta" className="text-[10px] text-gray-700 hover:text-acvb-gold transition-colors tracking-widest uppercase">Portal do Atleta</Link>
-          </div>
+          <Link href="/admin" target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-700 hover:text-acvb-gold transition-colors tracking-widest uppercase">Admin</Link>
         </footer>
       </body>
     </html>

@@ -13,17 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model UniformOrder {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  number    Int
-  size      String
-  type      String   @default("PRETA") 
-  email     String
-  status    String   @default("PENDENTE") 
-  createdAt DateTime @default(now())
-}
-
 model MatchRequest {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   teamName  String
@@ -41,18 +30,5 @@ model CalendarEvent {
   location  String
   date      String
   time      String
-  createdAt DateTime @default(now())
-}
-
-model Player {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  number    Int
-  position  String
-  email     String   @unique
-  password  String
-  bio       String?  
-  photoUrl  String?  
-  instagram String?  
   createdAt DateTime @default(now())
 }

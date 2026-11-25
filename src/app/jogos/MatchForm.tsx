@@ -16,7 +16,7 @@ export default function MatchForm() {
     const formData = new FormData(e.currentTarget);
     const email = formData.get('email') as string;
 
-    const exists = await checkExistingEmailCommand(email, 'match');
+    const exists = await checkExistingEmailCommand(email);
     if (exists) {
       setPendingData(formData);
       setShowModal(true);

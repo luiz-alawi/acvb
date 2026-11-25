@@ -23,13 +23,10 @@ export default function Home() {
           Não é apenas um jogo, é a nossa identidade. A Associação Clube de Voleibol é técnica, potência e paixão desenfreada pelas quadras.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
-          <Link href="/camisetas" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-acvb-gold text-acvb-navy font-black text-sm uppercase tracking-widest py-4 px-10 rounded-full hover:bg-white transition-all duration-500 shadow-[0_0_40px_-10px_rgba(185,141,59,0.4)]">
-            Garantir Uniforme
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link href="/jogos" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white font-bold text-sm uppercase tracking-widest py-4 px-10 rounded-full hover:bg-white/10 transition-all duration-300">
-            <CalendarDays className="w-4 h-4 text-acvb-gold" />
+          <Link href="/jogos" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-acvb-gold text-acvb-navy font-black text-sm uppercase tracking-widest py-4 px-10 rounded-full hover:bg-white transition-all duration-500 shadow-[0_0_40px_-10px_rgba(185,141,59,0.4)]">
+            <CalendarDays className="w-4 h-4" />
             Agenda de Jogos
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

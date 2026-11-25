@@ -2,32 +2,22 @@
 
 Next.js, TypeScript, Tailwind CSS, Prisma, MongoDB
 
-Plataforma web completa desenvolvida para a gestão técnica, administrativa e pública da **Associação Clube de Voleibol (ACVB)**. O sistema possui um design moderno (Dark Mode/Esports), com áreas exclusivas para a diretoria, atletas e torcedores.
+Plataforma web completa desenvolvida para a gestão técnica, administrativa e pública da **Associação Clube de Voleibol (ACVB)**. O sistema possui um design moderno (Dark Mode/Esports), com área exclusiva para a diretoria e portal público para torcedores.
 
 ---
 
 ## ✨ Funcionalidades
 
-O sistema é dividido em três grandes módulos funcionais:
+O sistema é dividido em dois módulos funcionais:
 
 ### 🌐 Portal Público
 * **Página Inicial:** Apresentação do time com design imersivo.
-* **Elenco:** Exibição dinâmica dos atletas atualizada em tempo real.
 * **Amistosos:** Calendário de partidas oficiais e formulário para equipes adversárias solicitarem amistosos.
-* **Manto ACVB:** Sistema de reserva de uniformes com visualização dinâmica (troca automática entre os modelos Preto e Branco).
 
 ### 🛡️ Central de Comando (Painel Admin)
 * **Acesso Restrito:** Rota protegida por senha para configurações do site.
 * **Gestão de Amistosos:** Aprovação de desafios recebidos ou recusa.
-* **Controle de Uniformes:** Tabela de pedidos pendentes com baixa automática e controle visual de status.
-* **Gestão de Elenco:** Cadastro de novos atletas, definição de posição, numeração e geração de credenciais de acesso (E-mail e Senha inicial).
 
-### 👤 Portal do Atleta
-* **Autenticação:** Login individual para cada jogador cadastrado.
-* **Perfil Customizável:** Edição autônoma de biografia e @ do Instagram.
-* **Upload com Crop:** Envio de foto de perfil com ferramenta nativa de enquadramento/recorte (1:1) integrada via `react-easy-crop`, convertendo a imagem final em Base64 para armazenamento eficiente.
-
----
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -37,7 +27,6 @@ O sistema é dividido em três grandes módulos funcionais:
 * **Banco de Dados:** [MongoDB](https://www.mongodb.com/)
 * **ORM:** [Prisma 6](https://www.prisma.io/)
 * **Ícones:** [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
-* **Ferramentas Extras:** `react-easy-crop` (Recorte de imagens)
 
 ---
 
